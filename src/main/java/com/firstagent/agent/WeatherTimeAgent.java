@@ -22,7 +22,7 @@ public class WeatherTimeAgent {
     private static BaseAgent initAgent() {
         return LlmAgent.builder()
                 .name("city_agent")
-                .model("gemini-2.0-flash")
+                .model("gemini-flash-latest")
                 .description("Helpful person on the street in New York, London or Tokyo.")
                 .instruction("""
                         You can answer questions about the current weather and time in New York, London, and Tokyo.
