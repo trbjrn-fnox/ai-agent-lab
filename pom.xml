@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>25</java.version>
-        <google-adk.version>0.7.0</google-adk.version>
+        <google-adk.version>1.2.0</google-adk.version>
     </properties>
 
     <dependencies>
