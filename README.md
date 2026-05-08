@@ -26,7 +26,7 @@ src/main/java/com/firstagent/
 **`FirstAgentApplication.java`** -- Standard Spring Boot application entry point.
 
 **`WeatherTimeAgent.java`** -- Defines the agent and its tools:
-- Builds an `LlmAgent` (backed by `gemini-2.0-flash`) with two function tools.
+- Builds an `LlmAgent` (backed by `gemini-flash-latest`) with two function tools.
 - `getCurrentTime(city)` -- Looks up the city's timezone from Java's `ZoneId` registry and returns the current time.
 - `getWeather(city)` -- Returns mock weather data for New York, London, and Tokyo.
 
