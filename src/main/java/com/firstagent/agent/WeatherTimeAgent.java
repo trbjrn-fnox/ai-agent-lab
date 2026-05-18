@@ -56,7 +56,7 @@ public class WeatherTimeAgent {
                         "status", "success",
                         "report", "The current time in " + city + " is "
                                 + ZonedDateTime.now(ZoneId.of(zid))
-                                        .format(DateTimeFormatter.ofPattern("HH:mm"))
+                                .format(DateTimeFormatter.ofPattern("HH:mm"))
                                 + "."))
                 .orElse(Map.of(
                         "status", "error",

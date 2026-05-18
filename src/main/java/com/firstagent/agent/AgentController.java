@@ -24,7 +24,9 @@ public class AgentController {
     private final BaseAgent agent;
     private InMemoryRunner runner;
 
-    /** Map of userId -> Session for session management. */
+    /**
+     * Map of userId -> Session for session management.
+     */
     private final Map<String, Session> sessions = new ConcurrentHashMap<>();
 
     public AgentController(BaseAgent agent) {
@@ -75,5 +77,6 @@ public class AgentController {
     /**
      * Request body for the chat endpoint.
      */
-    public record ChatRequest(String message, String userId) {}
+    public record ChatRequest(String message, String userId) {
+    }
 }
