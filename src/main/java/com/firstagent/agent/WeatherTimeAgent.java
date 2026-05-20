@@ -1,9 +1,8 @@
 package com.firstagent.agent;
 
-import com.google.adk.agents.BaseAgent;
-import com.google.adk.agents.LlmAgent;
-import com.google.adk.tools.Annotations.Schema;
-import com.google.adk.tools.FunctionTool;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
 import java.time.ZoneId;
@@ -12,35 +11,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 /**
- * A sample multi-tool agent that can answer questions about weather and time.
- * Uses Google ADK's LlmAgent with FunctionTool bindings.
+ * Tool provider that can answer questions about weather and time.
  */
+@Service
 public class WeatherTimeAgent {
-
-    public static final BaseAgent ROOT_AGENT = initAgent();
-
-    private static BaseAgent initAgent() {
-        return LlmAgent.builder()
-                .name("city_agent")
-                .model("gemini-flash-latest")
-                .description("Helpful person on the street in New York, London or Tokyo.")
-                .instruction("""
-                        You can answer questions about the current weather and time in New York, London, and Tokyo.
-                         If the user asks about the weather or time in one of these cities, use the appropriate tool (getCurrentTime for time and getWeather for weather) to get the information and provide a clear and concise answer.
-                         If the user asks about a different city, politely inform them that you only have information for New York, London, and Tokyo.
-                        """)
-                .tools(
-                        FunctionTool.create(WeatherTimeAgent.class, "getCurrentTime"),
-                        FunctionTool.create(WeatherTimeAgent.class, "getWeather"))
-                .build();
-    }
 
     /**
      * Returns the current time for a given city by matching it to a known timezone.
      */
-    @Schema(description = "Get the current time for a given city")
-    public static Map<String, String> getCurrentTime(
-            @Schema(name = "city", description = "The name of the city to get the time for")
+    @Tool(description = "Get the current time for a given city")
+    public Map<String, String> getCurrentTime(
+            @ToolParam(description = "The name of the city to get the time for")
             String city) {
 
         String normalizedCity = Normalizer.normalize(city, Normalizer.Form.NFD)
@@ -66,9 +47,9 @@ public class WeatherTimeAgent {
     /**
      * Returns a mock weather report for a given city.
      */
-    @Schema(description = "Get the current weather for a given city")
-    public static Map<String, String> getWeather(
-            @Schema(name = "city", description = "The name of the city to get the weather for")
+    @Tool(description = "Get the current weather for a given city")
+    public Map<String, String> getWeather(
+            @ToolParam(description = "The name of the city to get the weather for")
             String city) {
 
         if ("new york".equalsIgnoreCase(city)) {

@@ -29,6 +29,5 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Run the application
-# Environment variables GOOGLE_API_KEY and GOOGLE_GENAI_USE_VERTEXAI
-# should be provided at runtime via `docker run --env-file .env` or `-e` flags
+# GOOGLE_API_KEY should be provided at runtime via `docker run --env-file .env` or `-e` flags
 ENTRYPOINT ["java", "-jar", "app.jar"]

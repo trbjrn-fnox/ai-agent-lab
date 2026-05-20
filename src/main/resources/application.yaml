@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: first-agent
+  ai:
+    model:
+      chat: google-genai
+    google:
+      genai:
+        api-key: ${GOOGLE_API_KEY}
+        chat:
+          options:
+            model: gemini-2.5-flash
