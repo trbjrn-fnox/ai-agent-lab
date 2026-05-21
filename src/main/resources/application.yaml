@@ -10,3 +10,17 @@ spring:
         chat:
           options:
             model: gemini-2.5-flash
+
+case-agent:
+  base-url: ${CASE_API_BASE_URL:https://default-8080-aptic-integration.dev-pod-status.fnox.se}
+  openapi-url: ${CASE_API_OPENAPI_URL:https://route-utv.fnox.se/internalapi/aptic-integration/v3/api-docs}
+  cookie: ${CASE_API_COOKIE:}
+  allowed-methods:
+    - GET
+  allowed-operations:
+    - searchCases
+    - getCase
+    - getCaseTransactions
+    - getPendingActivities
+    - getPayments
+    - listReports

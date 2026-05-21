@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST controller that exposes the Spring AI chat client over HTTP.
+ * REST controller that exposes the case information agent over HTTP.
  */
 @RestController
-@RequestMapping("/api/agent")
-public class AgentController {
+@RequestMapping("/api/case-agent")
+public class CaseAgentController {
 
     private final ChatClient chatClient;
 
-    public AgentController(@Qualifier("weatherTimeChatClient") ChatClient chatClient) {
+    public CaseAgentController(@Qualifier("caseChatClient") ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 
     /**
-     * Send a chat message to the agent and receive a response.
+     * Send a chat message to the case agent and receive a response.
      *
      * @param request contains the user message and optional conversationId
      * @return the agent's response
